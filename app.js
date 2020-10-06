@@ -11,7 +11,7 @@ const server = new ApolloServer({ typeDefs, resolvers });
 server.applyMiddleware({ app });
 
 app.get('/', (req, res) => {
-  res.send('Hello world!');
+  res.send('Hi world!');
 });
 
 mongoose

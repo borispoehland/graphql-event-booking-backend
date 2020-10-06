@@ -1,0 +1,7 @@
+{
+    "env": {
+        "MONGO_USER": "bobopland",
+        "MONGO_PASSWORD": "aO78RS5v^BpX7cY8S",
+        "MONGO_DB": "graphql-sample-backend"
+    }
+}

@@ -10,12 +10,14 @@ module.exports = {
     },
   },
   Mutation: {
-    createEvent: async (_, { eventInput }) => {
-      const event = createEventDocument(eventInput);
+    createEvent: async (_, { eventInput }, { isAuth, userId }) => {
+      if (!isAuth) throw new Error('Unauthenticated!');
+
+      const event = createEventDocument({... eventInput, userId });
 
       const savedEvent = await event.save();
 
-      const creator = await User.findById('5f7c64fd48977051afa40a23');
+      const creator = await User.findById(userId);
       if (!creator) throw new Error('User not found.');
       creator.createdEvents = [...creator.createdEvents, event];
       await creator.save();

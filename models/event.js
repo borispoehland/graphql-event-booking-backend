@@ -29,13 +29,13 @@ const eventSchema = new Schema({
 
 const Event = mongoose.model('Event', eventSchema);
 
-const createEventDocument = ({ title, description, price, date }) => {
+const createEventDocument = ({ title, description, price, date, userId }) => {
   return new Event({
     title,
     description,
     price: +price,
     date: new Date(date),
-    creator: '5f7c64fd48977051afa40a23',
+    creator: userId,
   });
 };
 

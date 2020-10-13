@@ -5,15 +5,21 @@ type User {
     createdEvents: [Event!]
 }
 
+type AuthData {
+    userId: ID!
+    token: String!
+    tokenExpiration: Int!
+}
+
 input UserInput {
     email: String!
     password: String!
 }
 
-extend type Query {
-    user(_id: ID!): User
+type Query {
+    login(email: String!, password: String!): AuthData!
 }
 
-extend type Mutation {
+type Mutation {
     createUser(userInput: UserInput): User
 }

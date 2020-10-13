@@ -14,11 +14,11 @@ input EventInput {
   date: String!
 }
 
-type Query {
+extend type Query {
     events: [Event!]!
 }
 
-type Mutation {
+extend type Mutation {
     createEvent(eventInput: EventInput): Event
 }
 

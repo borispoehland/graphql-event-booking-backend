@@ -1,6 +1,6 @@
 const { User, createUserDocument } = require('../../models/user');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
 
 module.exports = {
   Query: {
@@ -11,16 +11,12 @@ module.exports = {
       const correctPassword = await bcrypt.compare(password, user.password);
       if (!correctPassword) throw new Error('Password is incorrect!');
 
-      const token = jwt.sign(
-          { userId: user.id, email: user.email },
-          process.env.JWT_SECRET,
-          {
-            expiresIn: '1h'
-          }
-      );
+      const token = jwt.sign({ userId: user.id, email: user.email }, process.env.JWT_SECRET, {
+        expiresIn: '1h',
+      });
 
       return { userId: user.id, token, tokenExpiration: 1 };
-    }
+    },
   },
   Mutation: {
     createUser: async (_, { userInput: { email, password } }) => {

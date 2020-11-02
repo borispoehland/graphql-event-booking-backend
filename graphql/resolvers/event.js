@@ -13,7 +13,7 @@ module.exports = {
     createEvent: async (_, { eventInput }, { isAuth, userId }) => {
       if (!isAuth) throw new Error('Unauthenticated!');
 
-      const event = createEventDocument({... eventInput, userId });
+      const event = createEventDocument({ ...eventInput, userId });
 
       const savedEvent = await event.save();
 

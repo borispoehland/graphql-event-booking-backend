@@ -1,1 +1,1 @@
-module.exports = require('bp-config-prettier');
+module.exports = require('@bpoehland/prettier-config');
